@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import profilePic from "../../Assets/profilePic.jpg";
 import "./Profile.css";
 import { IoIosCamera } from "react-icons/io";
-import { BiLike, BiDislike } from "react-icons/bi";
+import { BiLike, BiDislike, BiSolidLike } from "react-icons/bi";
 import { MdOutlineComment } from "react-icons/md";
 import { IoShareSocialOutline } from "react-icons/io5";
 import Modal from "react-modal";
@@ -95,30 +95,30 @@ const Profile = () => {
       </Modal>
       {/*Profile SideBar */}
       <div className="w-auto md:w-[23%] h-full md:sticky top-0 md:ml-8">
-        <div className="md:mt-8 w-full shadow-md shadow-[#9568fd] bg-black/90 relative text-white py-5 flex flex-col items-center border-[1px] border-black/25 rounded-md">
-          <div className="w-16 h-20 bg-[#9568fd] right-0 top-8 absolute blur-2xl shadow-md"></div>
-          <div className="w-8 h-20 bg-[#9568fd] left-0 bottom-8 absolute blur-2xl shadow-md"></div>
-          <div className="md:w-32 w-20 border-[2px] border-white/65 relative rounded-full md:h-32 h-20 mt-10">
+        <div className="md:mt-8 w-full shadow-md shadow-[#5E9DDD] bg-[#173054] relative text-white py-5 flex flex-col items-center border-[1px] border-black/25 rounded-md">
+          {/* <div className="w-16 h-20 bg-[#5E9DDD] right-0 top-8 absolute blur-2xl shadow-md"></div> */}
+          {/* <div className="w-8 h-20 bg-[#5E9DDD] left-0 bottom-8 absolute blur-2xl shadow-md"></div> */}
+          <div className="md:w-32 w-20 border-[2px] border-[#B8BDB5] relative rounded-full md:h-32 h-20 mt-10">
             <img
               src={profilePic}
               onClick={openModal}
               alt="Profile"
               className="w-full rounded-full cursor-pointer object-cover h-full"
             />
-            <div className="bg-[#9568fd] p-1 sm:p-2 cursor-pointer text-white absolute right-0 bottom-[-3px] sm:right-4 rounded-full w-min">
+            <div className="bg-[#5E9DDD] p-1 sm:p-2 cursor-pointer text-[#E0E2DB] absolute right-0 bottom-[-3px] sm:right-4 rounded-full w-min">
               <IoIosCamera />
             </div>
           </div>
           <div className="py-8">
-            <h1 className="uppercase text-2xl font-semibold font-sans">
+            <h1 className="uppercase text-2xl text-[#E0E2DB] font-semibold font-sans">
               johan koza
             </h1>
-            <h1 className="text-sm text-gray-400 text-center">
+            <h1 className="text-sm text-[#D2D4C8] text-center">
               johankoza@gmail.com
             </h1>
           </div>
           <div className="flex flex-col items-center gap-4">
-            <button className="bg-[#9568fd] w-32 py-1.5 text-white font-semibold">
+            <button className="bg-[#5E9DDD] w-32 py-1.5 text-white font-semibold">
               Edit Profile
             </button>
             <button className="bg-red-500 w-32 px-2 py-1.5 text-white font-semibold">
@@ -134,10 +134,8 @@ const Profile = () => {
           return (
             <div
               key={index}
-              className="w-full bg-black/90 relative text-white p-3  flex flex-col border-[1px] border-black/25 rounded-md"
+              className="w-full bg-[#173054] relative text-[#E0E2DB] p-3  flex flex-col border-[1px] border-black/25 rounded-md"
             >
-              <div className="w-16 h-20 bg-[#9568fd] right-0 top-8 absolute blur-2xl shadow-md"></div>
-              <div className="w-8 h-20 bg-[#9568fd] left-0 bottom-8 absolute blur-2xl shadow-md"></div>
               <div className="w-full flex mt-3 items-center justify-between">
                 <span className="flex items-center gap-5">
                   <img
@@ -149,7 +147,7 @@ const Profile = () => {
                     {post.uploadedBy}
                   </h1>
                 </span>
-                <span>{post.createdAt}</span>
+                <span className="text-[#E0E2DB]">{post.createdAt}</span>
               </div>
               <div className="my-6 md:my-8 flex flex-col gap-2">
                 <h1 className="text-xl font-bold tracking-wide font-sans capitalize">
@@ -157,11 +155,11 @@ const Profile = () => {
                 </h1>
                 <h1 className="capitalize mt-3">{post.analyzedText}</h1>
               </div>
-              <div className="flex bg-white px-2 py-3 rounded-md justify-evenly  items-center gap-5">
-                <BiLike className="text-[#9568fd]" size={21} />
-                <BiDislike className="text-black/90" size={21} />
-                <MdOutlineComment className="text-black/90" size={21} />
-                <IoShareSocialOutline className="text-black/90" size={21} />
+              <div className="flex bg-[#E0E2DB] px-2 py-3 rounded-md justify-evenly  items-center gap-5">
+                <BiSolidLike className="text-[#5E9DDD]" size={21} />
+                <BiDislike className="text-[#173054]" size={21} />
+                <MdOutlineComment className="text-[#173054]" size={21} />
+                <IoShareSocialOutline className="text-[#173054]" size={21} />
               </div>
             </div>
           );
