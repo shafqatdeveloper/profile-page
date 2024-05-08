@@ -70,27 +70,97 @@ const Profile = () => {
       transform: "translate(-50%, -50%)",
     },
   };
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const [openProfilePic, setOpenProfilePic] = useState(false);
+  const [editProfileForm, setEditProfileForm] = useState(false);
 
-  function openModal() {
-    setIsOpen(true);
+  function openPicModal() {
+    setOpenProfilePic(true);
   }
 
-  function closeModal() {
-    setIsOpen(false);
+  function closePicModal() {
+    setOpenProfilePic(false);
+  }
+
+  function openEditProfileModal() {
+    setEditProfileForm(true);
+  }
+
+  function closeEditProfileModal() {
+    setEditProfileForm(false);
   }
 
   return (
     <div className={`w-full h-full p-2 md:p-0 flex flex-col md:flex-row gap-4`}>
-      {/* Profile Pic Opned */}
+      {/* Profile Pic Model */}
       <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
+        isOpen={openProfilePic}
+        onRequestClose={closePicModal}
         style={customStyles}
         contentLabel="Example Modal"
       >
         <div className="w-96 h-96">
           <img src={profilePic} alt="" className="w-full h-full" />
+        </div>
+      </Modal>
+      {/* Edit Profile Model */}
+      <Modal
+        isOpen={editProfileForm}
+        onRequestClose={closeEditProfileModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <h1 className="text-center text-xl font-bold text-[#173054] pb-5">
+          Update Profile
+        </h1>
+        <div className="w-72 md:w-80">
+          <form className="w-full p-2 flex gap-5 flex-col" id="update-profile">
+            <div className="w-full">
+              <label htmlFor="name">Name</label>
+              <div className="border-2 mt-1 rounded-md border-[#173054] bg-[#e5e6e3] p-1.5 w-full">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="John "
+                  className="w-full p-1.5 rounded-md outline-none bg-transparent focus:outline-none"
+                />
+              </div>
+            </div>
+            <div className="w-full">
+              <label htmlFor="email">Email</label>
+              <div className="border-2 mt-1 rounded-md border-[#173054] bg-[#e5e6e3] p-1.5 w-full">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="john@gmail.com"
+                  className="w-full p-1.5 rounded-md outline-none bg-transparent focus:outline-none"
+                />
+              </div>
+            </div>
+            <div className="w-full">
+              <div className="flex flex-col gap-5">
+                <label htmlFor="password">Password</label>
+                <div className="border-2 mt-1 rounded-md border-[#173054] bg-[#e5e6e3] p-1.5 w-full">
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="*********"
+                    className="w-full p-1.5 rounded-md outline-none bg-transparent focus:outline-none"
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <label htmlFor="profilePic">Profile Pic</label>
+                  <input
+                    type="file"
+                    class="custom-file-input"
+                    accept="image/*"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="w-full bg-[#5E9DDD] py-3.5 rounded-md flex items-center justify-center text-white font-medium">
+              <button>Update Profile</button>
+            </div>
+          </form>
         </div>
       </Modal>
       {/*Profile SideBar */}
@@ -101,9 +171,9 @@ const Profile = () => {
           <div className="md:w-32 w-20 border-[2px] border-[#B8BDB5] relative rounded-full md:h-32 h-20 mt-10">
             <img
               src={profilePic}
-              onClick={openModal}
+              onClick={openPicModal}
               alt="Profile"
-              className="w-full rounded-full cursor-pointer object-cover h-full"
+              className="w-full rounded-full cursor-pointer object-center h-full"
             />
             <div className="bg-[#5E9DDD] p-1 sm:p-2 cursor-pointer text-[#E0E2DB] absolute right-0 bottom-[-3px] sm:right-4 rounded-full w-min">
               <IoIosCamera />
@@ -118,7 +188,10 @@ const Profile = () => {
             </h1>
           </div>
           <div className="flex flex-col items-center gap-4">
-            <button className="bg-[#5E9DDD] w-32 py-1.5 text-white font-semibold">
+            <button
+              onClick={openEditProfileModal}
+              className="bg-[#5E9DDD] w-32 py-1.5 text-white font-semibold"
+            >
               Edit Profile
             </button>
             <button className="bg-red-500 w-32 px-2 py-1.5 text-white font-semibold">
